@@ -13,7 +13,7 @@ const Header = (props) => {
         </View>
 
     );
-}
+};
 
 const styles = {
     viewStyle: {
@@ -22,7 +22,7 @@ const styles = {
         alignItems: 'center',
         paddingTop: 15,
         shadowColor: '#000000',
-        shadowOffset: {width: 0, height: 2},
+        shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.2,
         height: 60,
         elevation: 2,
@@ -35,4 +35,4 @@ const styles = {
 
 
 //make the component available to other parts of the app
-export default Header;
+export { Header };
