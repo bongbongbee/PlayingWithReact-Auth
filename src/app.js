@@ -1,11 +1,11 @@
 import firebase from 'firebase';
 import React, { Component } from 'react';
 import { View } from 'react-native';
-import { Header, Button, CardSection } from './components/common';
+import { Header, Button, CardSection, LoadingIndicator } from './components/common';
 import LoginForm from './components/LoginForm';
 
 class App extends Component {
-    state = { loggedIn: false };
+    state = { loggedIn: null };
 
     componentWillMount() {
         firebase.initializeApp({
@@ -27,18 +27,21 @@ class App extends Component {
     }
 
     renderContent() {
-        if (this.state.loggedIn) {
-            return (
-                <CardSection>
-                    <Button>
-                        Log Out
-                    </Button>
-                </CardSection>
+        switch (this.state.loggedIn) {
+            case true:
+                return (
+                    <CardSection>
+                        <Button>
+                            Log Out
+                        </Button>
+                    </CardSection>
+                );
+            case false:
+                return <LoginForm />;
 
-            );
+            default:
+                return <LoadingIndicator />;
         }
-
-        return <LoginForm />;
     }
 
     render() {
