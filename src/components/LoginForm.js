@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
-import {Text} from 'react-native';
+import React, { Component } from 'react';
+import { Text } from 'react-native';
 import firebase from 'firebase';
-import {Button, Card, CardSection, InputField, LoadingIndicator} from './common';
+import { Button, Card, CardSection, InputField, LoadingIndicator } from './common';
 
 
 class LoginForm extends Component {
@@ -13,9 +13,9 @@ class LoginForm extends Component {
     };
 
     onButtonPress() {
-        const {email, password} = this.state;
+        const { email, password } = this.state;
 
-        this.setState({error: '', loading: true});
+        this.setState({ error: '', loading: true });
 
         firebase.auth().signInWithEmailAndPassword(email, password)
             .then(this.onLoginSuccess.bind(this))
@@ -42,7 +42,7 @@ class LoginForm extends Component {
 
     renderButton() {
         if (this.state.loading) {
-            return <LoadingIndicator size="small"/>;
+            return <LoadingIndicator size="small" />;
         }
 
         return (
@@ -60,7 +60,7 @@ class LoginForm extends Component {
                         label="Email"
                         value={this.state.email}
                         placeholder="rofl@lmao.com"
-                        onChangeText={email => this.setState({email})}
+                        onChangeText={email => this.setState({ email })}
                     />
                 </CardSection>
 
@@ -70,7 +70,7 @@ class LoginForm extends Component {
                         value={this.state.password}
                         secureTextEntry
                         placeholder="password"
-                        onChangeText={password => this.setState({password})}
+                        onChangeText={password => this.setState({ password })}
                     />
                 </CardSection>
 
